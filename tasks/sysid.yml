@@ -1,0 +1,24 @@
+---
+
+- name: Create new machine-id of cloned VM
+  block:
+    - name: remove /var/lib/dbus/machine-id
+      ansible.builtin.file:
+        path: /var/lib/dbus/machine-id
+        state: absent
+    - name: remove /etc/machine-id
+      ansible.builtin.file:
+        path: /etc/machine-id
+        state: absent
+    - name: generate new machine-id
+      ansible.builtin.shell: systemd-machine-id-setup
+
+- name: Change hostname of cloned VM
+  ansible.builtin.hostname:
+    name: "{{ nameofhost }}.{{ nameofdomain }}"
+    use: systemd
+
+- name: Change current IP address to designated address
+  community.general.nmcli:
+    
+...
