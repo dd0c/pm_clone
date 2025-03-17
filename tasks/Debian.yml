@@ -1,0 +1,22 @@
+---
+
+- name: Include clone template tasks 
+  ansible.builtin.import_tasks:
+    file: clone_template.yml
+
+- name: Include system id change tasks 
+  ansible.builtin.import_tasks:
+    file: sysid.yml
+
+#- name: Include system network configuration tasks 
+#  ansible.builtin.import_tasks:
+#    file: netconfig.yml
+
+#- name: Include authentication bootstrapping tasks
+#  ansible.builtin.import_tasks:
+#    file: authentication.yml
+
+#- name: Register at RH
+#- name: make sure all tools are installed
+
+...
